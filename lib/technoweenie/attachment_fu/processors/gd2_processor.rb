@@ -12,7 +12,7 @@ module Technoweenie # :nodoc:
         module ClassMethods
           # Yields a block containing a GD2 Image for the given binary data.
           def with_image(file, &block)
-            im = GD2::Image.import(file)
+            im = GD2::Image.load(open(file).read)
             block.call(im)
           end
         end
